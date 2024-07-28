@@ -22,7 +22,7 @@ function App() {
                         level={2}
                         style={{ color: "white", lineHeight: "inherit", marginBottom: 0 }}
                     >
-                        GourmetHub
+                        SwiftBite
                     </Title>
                     <div>{authed ? <MyCart /> : <SignupForm />}</div>
                 </div>
