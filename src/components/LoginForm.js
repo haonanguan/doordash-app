@@ -48,7 +48,7 @@ class LoginForm extends React.Component {
                     Login
                 </Button>
                 <Modal
-                    title="Register"
+                    title="Login"
                     open={this.state.displayModal}
                     onCancel={this.handleCancel}
                     footer={null}

@@ -5,10 +5,14 @@ import { PlusOutlined } from "@ant-design/icons";
 
 const { Option } = Select;
 
-const AddToCartButton = ({ itemId }) => {
+const AddToCartButton = ({ itemId, authed }) => {
     const [loading, setLoading] = useState(false);
 
     const AddToCart = () => {
+        if (!authed) {
+            message.error(`Please log in to add food to cart`);
+            return;
+        }
         setLoading(true);
         addItemToCart(itemId)
             .then(() => message.success(`Successfully add item`))
@@ -25,7 +29,7 @@ const AddToCartButton = ({ itemId }) => {
     );
 };
 
-const FoodList = () => {
+const FoodList = ({ authed }) => {
     const [menuData, setMenuData] = useState([]);
     const [curRest, setCurRest] = useState();
     const [restaurants, setRestaurants] = useState([]);
@@ -92,7 +96,10 @@ const FoodList = () => {
                     dataSource={menuData}
                     renderItem={(item) => (
                         <List.Item>
-                            <Card title={item.name} extra={<AddToCartButton itemId={item.id} />}>
+                            <Card
+                                title={item.name}
+                                extra={<AddToCartButton itemId={item.id} authed={authed} />}
+                            >
                                 <img
                                     src={item.image_url}
                                     alt={item.name}

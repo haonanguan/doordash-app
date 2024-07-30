@@ -36,7 +36,7 @@ function App() {
                     overflowY: "auto",
                 }}
             >
-                <FoodList />
+                <FoodList authed={authed} />
                 {/* {authed ? <FoodList /> : <LoginForm onSuccess={() => setAuthed(true)} />} */}
             </Content>
         </Layout>
