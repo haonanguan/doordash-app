@@ -3,7 +3,6 @@ import { useState } from "react";
 import LoginForm from "./components/LoginForm";
 import FoodList from "./components/FoodList";
 import MyCart from "./components/MyCart";
-import SignupForm from "./components/SignupForm";
 
 const { Header, Content } = Layout;
 const { Title } = Typography;
