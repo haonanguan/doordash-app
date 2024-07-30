@@ -24,7 +24,10 @@ function App() {
                     >
                         SwiftBite
                     </Title>
-                    <div>{authed ? <MyCart /> : <SignupForm />}</div>
+                    {/* <div>{authed ? <MyCart /> : <SignupForm />}</div> */}
+                    <div>
+                        {authed ? <MyCart /> : <LoginForm onSuccess={() => setAuthed(true)} />}
+                    </div>
                 </div>
             </Header>
             <Content
@@ -34,7 +37,8 @@ function App() {
                     overflowY: "auto",
                 }}
             >
-                {authed ? <FoodList /> : <LoginForm onSuccess={() => setAuthed(true)} />}
+                <FoodList />
+                {/* {authed ? <FoodList /> : <LoginForm onSuccess={() => setAuthed(true)} />} */}
             </Content>
         </Layout>
     );

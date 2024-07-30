@@ -32,6 +32,16 @@ export const signup = (data) => {
     });
 };
 
+export const logout = () => {
+    const logoutUrl = "/logout";
+
+    return fetch(logoutUrl).then((response) => {
+        if (response.status < 200 || response.status >= 300) {
+            throw Error("Fail to log out");
+        }
+    });
+};
+
 export const getMenus = (restId) => {
     return fetch(`/restaurant/${restId}/menu`).then((response) => {
         if (response.status < 200 || response.status >= 300) {

@@ -31,7 +31,7 @@ const SignupForm = () => {
 
     return (
         <>
-            <Button shape="round" type="primary" onClick={signupOnclick}>
+            <Button type="primary" onClick={signupOnclick}>
                 Register
             </Button>
             <Modal
