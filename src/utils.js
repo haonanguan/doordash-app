@@ -35,7 +35,10 @@ export const signup = (data) => {
 export const logout = () => {
     const logoutUrl = "/logout";
 
-    return fetch(logoutUrl).then((response) => {
+    return fetch(logoutUrl, {
+        method: "POST",
+        credentials: "include",
+    }).then((response) => {
         if (response.status < 200 || response.status >= 300) {
             throw Error("Fail to log out");
         }

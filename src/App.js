@@ -1,8 +1,9 @@
-import { Layout, Typography } from "antd";
+import { Layout, Typography, Button, message } from "antd";
 import { useState } from "react";
 import LoginForm from "./components/LoginForm";
 import FoodList from "./components/FoodList";
 import MyCart from "./components/MyCart";
+import { logout } from "./utils";
 
 const { Header, Content } = Layout;
 const { Title } = Typography;
@@ -10,6 +11,15 @@ const { Title } = Typography;
 function App() {
     const [authed, setAuthed] = useState(false);
 
+    const handleLogout = async () => {
+        try {
+            await logout();
+            setAuthed(false);
+            message.success("Successfully log out");
+        } catch (error) {
+            message.error(error.message);
+        }
+    };
     return (
         <Layout style={{ height: "100vh" }}>
             <Header>
@@ -25,7 +35,16 @@ function App() {
                     </Title>
                     {/* <div>{authed ? <MyCart /> : <SignupForm />}</div> */}
                     <div>
-                        {authed ? <MyCart /> : <LoginForm onSuccess={() => setAuthed(true)} />}
+                        {authed ? (
+                            <>
+                                <MyCart />
+                                <Button shape="round" type="primary" onClick={handleLogout}>
+                                    Logout
+                                </Button>
+                            </>
+                        ) : (
+                            <LoginForm onSuccess={() => setAuthed(true)} />
+                        )}
                     </div>
                 </div>
             </Header>
